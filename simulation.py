@@ -1,7 +1,6 @@
 import user_interface
 from customer import Customer
 from soda_machine import SodaMachine
-from user_interface import simulation_main_menu
 
 
 class Simulation:
