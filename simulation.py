@@ -1,3 +1,7 @@
+import user_interface
+from customer import Customer
+from soda_machine import SodaMachine
+from user_interface import simulation_main_menu
 
 
 class Simulation:
@@ -9,7 +13,7 @@ class Simulation:
         customer = Customer()
         soda_machine = SodaMachine()
         will_proceed = False
-        while will_proceed:
+        while not will_proceed:
             user_option = user_interface.simulation_main_menu()
             if user_option == "1":
                 soda_machine.begin_transaction(customer)
