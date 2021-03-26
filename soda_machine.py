@@ -1,4 +1,5 @@
-
+from cans import Can
+from coins import  Coin
 
 class SodaMachine:
     def __init__(self):
@@ -8,13 +9,13 @@ class SodaMachine:
     def fill_register(self):
         """Method will fill SodaMachine's register with certain amounts of each coin when called."""
         for index in range(8):
-        self.register.append(coins.Quarter())
+            self.register.append(coins.Quarter())
         for index in range(10):
-        self.register.append(coins.Dime())
+            self.register.append(coins.Dime())
         for index in range(20):
-        self.register.append(coins.Nickel())
+            self.register.append(coins.Nickel())
         for index in range(50):
-        self.register.append(coins.Penny())
+            self.register.append(coins.Penny())
 
     def fill_inventory(self):
         """Method will fill SodaMachine's cans list with certain amounts of each can when called."""
@@ -32,15 +33,10 @@ class SodaMachine:
             self.run_transaction(customer)
 
     def run_transaction(self, customer):
-
         selected_soda_name = user_interface.soda_selection(self.inventory)
-
         selected_soda = self.get_inventory_soda(selected_soda_name)
-
         customer_payment = customer.gather_coins_from_wallet(selected_soda_name)
-
         self.calculate_transaction(customer_payment, selected_soda_name, customer)
-
         user_interface.output_text("Transaction complete")
 
     def calculate_transaction(self, customer_payment, selected_soda, customer):
@@ -49,7 +45,7 @@ class SodaMachine:
             change_value = self.determine_change_value(total_payment_value, selected_soda.price)
             customer_change = self.gather_change_from_register(change_value)
             if customer_change is None:
-                user_interface.output_text('Dispensing ${total_payment_value} back to customer')
+                user_interface.output_text(f'Dispensing ${total_payment_value} back to customer')
                 customer.add_coins_to_wallet(customer_payment)
                 self.return_inventory(selected_soda)
             else:
@@ -66,7 +62,7 @@ class SodaMachine:
             customer.add_coins_to_wallet(customer_payment)
             self.return_inventory(selected_soda)
 
-    def gather_change_from_register(self, change_value)
+    def gather_change_from_register(self, change_value):
         change_list = []
         while change_value > 0:
             if change_value >= 0.25 and self.register_has_coin("quarter"):

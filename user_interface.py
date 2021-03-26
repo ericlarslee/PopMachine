@@ -74,8 +74,8 @@ def soda_selection(inventory):
         print("Please choose from the following options:")
         i = 1
         for can in soda_options:
-            print("\n\tEnter -{i}- for {can} : ${can.price}")
-            i++
+            print(f'\n\tEnter -{i}- for {can} : ${can.price}')
+            i += 1
         user_selection = try_parse_int(input("Selection:"))
         validated_user_selection = validate_coin_choice(user_selection, soda_options)
     return validated_user_selection[1]
@@ -92,10 +92,7 @@ def validate_coin_choice(selection, unique_cans):
 
 def try_parse_int(value):
     """Attempts to parse a string into an integer, returns 0 if unable to parse. No errors."""
-    try:
-        return int(value)
-    except:
-        return 0
+    return int(value)
 
 
 def get_unique_can_names(inventory):
@@ -155,6 +152,6 @@ def validate_coin_selection(selection):
 
 def end_message(soda_name, change_amount):
     """Closing message displaying name of soda purchased and amount of change returned"""
-    print(f'Enjoy your {soda}')
+    print(f'Enjoy your {soda_name}')
     if change_amount >= 0:
         print(f'Dispensing ${change_amount}')
