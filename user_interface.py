@@ -92,7 +92,10 @@ def validate_coin_choice(selection, unique_cans):
 
 def try_parse_int(value):
     """Attempts to parse a string into an integer, returns 0 if unable to parse. No errors."""
-    return int(value)
+    try:
+        return int(value)
+    except:
+        return 0
 
 
 def get_unique_can_names(inventory):
